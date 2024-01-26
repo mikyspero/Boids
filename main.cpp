@@ -123,11 +123,10 @@ std::string print_data_to_string(data const& to_be_printed,flocking::running_par
 }
 
 void render_boids(std::vector<flocking::Boid>& flock, flocking::running_parameters const& parameters,sf::RenderWindow& simulation_window){
-  unsigned const display_width = .75 * sf::VideoMode::getDesktopMode().width;
-  unsigned const display_height = .75 * sf::VideoMode::getDesktopMode().height;
-  auto const x_scale = display_width / (parameters.right_bound - parameters.left_bound);
-  auto const y_scale = display_height / (parameters.upper_bound - parameters.bottom_bound);
-  //need to make this part presentable
+  //calculation of the scales necessary to convert from the proprietary 2d vectors to those in ASML
+  auto const x_scale = (.75 * sf::VideoMode::getDesktopMode().width) / (parameters.right_bound - parameters.left_bound);
+  auto const y_scale = (.75 * sf::VideoMode::getDesktopMode().height) / (parameters.upper_bound - parameters.bottom_bound);
+
   sf::CircleShape boid_shape{5.0f, 12};
   boid_shape.setFillColor(sf::Color(sf::Color::White));
   // The simulation_window with the objects of the previous frame is cleared and filled with our

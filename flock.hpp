@@ -6,11 +6,11 @@ namespace flocking{
   // A struct containing parameters necessary for the dynamics of the simulation
   // It specifies the behavior of the boids in the flock
   struct running_parameters {
-    int boids_number{850};
+    int boids_number{700};
     double s{0.4};         // Separation parameter
     double a{0.9};         // Alignment parameter
     double c{0.8};         // Cohesion parameter
-    double d_s{1.5};        // Distance at which separation gets activated
+    double d_s{1.75};        // Distance at which separation gets activated
     double d{4.};         // Distance to define the neighborhood between boids
     double left_bound{0.};     // Left bound of the simulation space
     double right_bound{160.};  // Right bound of the simulation space
