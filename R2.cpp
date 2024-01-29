@@ -42,7 +42,8 @@ namespace Math{
   }
 
   R2 operator-(R2 const& lhs, R2 const& rhs) {
-     return lhs + (-rhs); 
+    auto result{lhs};
+    return result -= rhs;
   }
 
   R2 operator*(R2 const& lhs, double rhs) {
