@@ -1,5 +1,8 @@
-#include <iostream>
+#ifndef RENDER_HPP
+#define RENDER_HPP
 
+
+#include <iostream>
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -22,3 +25,5 @@ namespace view {
   dynamics::running_parameters create_parameters();
 
 }
+
+#endif
