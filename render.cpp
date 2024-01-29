@@ -65,7 +65,7 @@ namespace view {
     return dynamics::running_parameters{boid_number,separation,alignement,cohesion};
   }
   
-  void render_boids(std::vector<dynamics::Boid>& flock, dynamics::running_parameters const& parameters,sf::RenderWindow& simulation_window){
+  void render_boids(std::vector<dynamics::Boid> const& flock, dynamics::running_parameters const& parameters,sf::RenderWindow& simulation_window){
   //calculation of the scales necessary to convert from the proprietary 2d vectors to those in ASML
   auto const x_scale = (.75 * sf::VideoMode::getDesktopMode().width) / (parameters.right_bound - parameters.left_bound);
   auto const y_scale = (.75 * sf::VideoMode::getDesktopMode().height) / (parameters.upper_bound - parameters.bottom_bound);
