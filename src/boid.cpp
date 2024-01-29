@@ -1,11 +1,11 @@
+#include "../include/boid.hpp"
+
 #include <iostream>
 #include <vector>
 #include <cmath>
 #include <algorithm>
 #include <cassert>
 #include <numeric>
-
-#include "boid.hpp"
 
 namespace dynamics{
   Boid::Boid(Math::R2  r, Math::R2 v):r_{r},v_{v}{}
