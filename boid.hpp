@@ -1,10 +1,9 @@
 #ifndef BOID_HPP
 #define BOID_HPP
 
-#include<vector>
-
 #include "R2.hpp"
 
+#include <vector>
 namespace dynamics {
   // Boid class represents an individual boid in the simulation
   class Boid {

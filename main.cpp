@@ -1,8 +1,6 @@
-#include <iostream>
-
 #include "render.hpp"
 
-
+#include <iostream>
 
 int main(){
   

@@ -1,12 +1,9 @@
-#include<cmath>
-#include<algorithm>
-#include<cassert>
-#include<numeric>
-#include <random>
-
-#include"R2.hpp"
-#include"boid.hpp"
 #include"flock.hpp"
+
+#include <algorithm>
+#include <cassert>
+#include <numeric>
+#include <random>
 
 namespace dynamics {
   // Function to create a flock of boids with uniformly distributed random positions and velocities

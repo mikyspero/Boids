@@ -1,7 +1,6 @@
-#include<cmath>
-
 #include"R2.hpp"
 
+#include<cmath>
 namespace Math{
 
   R2::R2(double x, double y) : x{x}, y{y} {}

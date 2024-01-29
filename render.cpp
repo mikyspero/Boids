@@ -1,11 +1,10 @@
-#include <iostream>
-
+#include "flock.hpp"
+#include "render.hpp"
 
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "flock.hpp"
-#include "render.hpp"
+#include <iostream>
 
 namespace view {
     // Function to create parameters for the simulation (custom or default) needs heavy refactoring
@@ -133,14 +132,9 @@ data build_data(std::vector<dynamics::Boid> const& flock){
     data_window.display();
   }
 
-  
 
 
-
-
-
-
-  void run_simulation(std::vector<dynamics::Boid>& flock, dynamics::running_parameters const& parameters) {
+  void run_simulation(std::vector<dynamics::Boid> const& flock, dynamics::running_parameters const& parameters) {
     //let's build a simulation_window 3/4 of our desktop
     unsigned const display_width = .75 * sf::VideoMode::getDesktopMode().width;
     unsigned const display_height = .75 * sf::VideoMode::getDesktopMode().height;
