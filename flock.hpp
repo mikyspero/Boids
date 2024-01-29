@@ -2,7 +2,7 @@
 #define FLOCK_HPP
 #include"boid.hpp"
 
-namespace flocking{
+namespace dynamics{
   // A struct containing parameters necessary for the dynamics of the simulation
   // It specifies the behavior of the boids in the flock
   struct running_parameters {
@@ -19,6 +19,8 @@ namespace flocking{
     double maximum_velocity{100.};   // Maximum velocity of the boids
     double minimum_velocity{20.};   // Minimum velocity of the boids
   };
+
+  std::vector<dynamics::Boid> create_flock(dynamics::running_parameters const& parameters);
 
   // Functions that calculate the components of the boid acceleration
 

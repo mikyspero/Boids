@@ -5,7 +5,7 @@
 
 #include "R2.hpp"
 
-namespace flocking {
+namespace dynamics {
   // Boid class represents an individual boid in the simulation
   class Boid {
   private:
@@ -32,17 +32,17 @@ namespace flocking {
   std::vector<Boid> get_neighborhood(std::vector<Boid> const &flock, Boid const &fixed_boid,double const d);
 }
 
-namespace post{
+namespace view{
   // Mean distance of a flock of boids
-  double calculate_mean_distance(std::vector<flocking::Boid> const &flock);
+  double calculate_mean_distance(std::vector<dynamics::Boid> const &flock);
 
 // Standard deviation of distances of a flock of boids,the mean distance is passed to simplify the functuion
-  double calculate_standard_deviation_distance(std::vector<flocking::Boid> const &flock,double  mean_distance);
+  double calculate_standard_deviation_distance(std::vector<dynamics::Boid> const &flock,double  mean_distance);
 
 // Mean of magnitudes of velocity vectors of a flock of boids
-  double calculate_mean_velocity(std::vector<flocking::Boid> const &flock);
+  double calculate_mean_velocity(std::vector<dynamics::Boid> const &flock);
 
 //  Standard deviation of distances of a flock of boids, the mean velocity is passed to simplify the functuion
-  double calculate_standard_deviation_velocity(std::vector<flocking::Boid> const &flock,double  mean_velocity);
+  double calculate_standard_deviation_velocity(std::vector<dynamics::Boid> const &flock,double  mean_velocity);
 }
 #endif

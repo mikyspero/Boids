@@ -2,12 +2,27 @@
 #include<algorithm>
 #include<cassert>
 #include<numeric>
+#include <random>
 
 #include"R2.hpp"
 #include"boid.hpp"
 #include"flock.hpp"
 
-namespace flocking {
+namespace dynamics {
+  // Function to create a flock of boids with uniformly distributed random positions and velocities
+std::vector<dynamics::Boid> create_flock(dynamics::running_parameters const& parameters){
+  std::vector<dynamics::Boid> flock;
+  std::random_device rd;
+  std::default_random_engine eng(rd());
+  std::uniform_real_distribution<double> dist_width(parameters.left_bound,parameters.right_bound);
+  std::uniform_real_distribution<double> dist_height(parameters.bottom_bound,parameters.upper_bound);
+  std::uniform_real_distribution<double> dist_speed(-parameters.minimum_velocity*2,parameters.maximum_velocity/2);
+  flock.reserve(parameters.boids_number);
+  for (int i{}; i != parameters.boids_number; ++i) {
+    flock.emplace_back(dist_width(rd), dist_height(rd),dist_speed(rd), dist_speed(rd));//it's better than push back since it build the object directly inside the vector
+  }
+  return flock;
+}
 
   // Teleport a point toroidally within the simulation space
   Math::R2 teleport_toroidally(Math::R2 &r, running_parameters const &parameters) {
@@ -144,4 +159,4 @@ namespace flocking {
     flock = evolved_flock;
   }
 
-}  // namespace flocking
+}  // namespace dynamics

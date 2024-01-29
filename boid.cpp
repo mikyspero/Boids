@@ -7,7 +7,7 @@
 
 #include "boid.hpp"
 
-namespace flocking{
+namespace dynamics{
   Boid::Boid(Math::R2  r, Math::R2 v):r_{r},v_{v}{}
   Boid::Boid(double r_x, double r_y, double v_x, double v_y):Boid({r_x,r_y},{v_x,v_y}){}
   //straighforward getters and setters for the data members
@@ -56,10 +56,10 @@ namespace flocking{
     return neighborhood;
   }
 }
-namespace post {
+namespace view {
 
   // Calculate mean distance of a flock of boids
-  double calculate_mean_distance(std::vector<flocking::Boid> const &flock) {
+  double calculate_mean_distance(std::vector<dynamics::Boid> const &flock) {
     // Ensure there are at least two boids in the flock for meaningful calculations
     double const n = flock.size();
     assert(n > 1);
@@ -69,12 +69,12 @@ namespace post {
 
     // Iterate through each boid as a potential fixed_boid
     std::for_each(flock.begin(), flock.end(),
-      [&](flocking::Boid const &fixed_boid) {
+      [&](dynamics::Boid const &fixed_boid) {
         auto next = std::next((flock.begin() + i));
 
         // Calculate the sum of distances from the fixed_boid to all other boids
         double partial_sum = std::accumulate(next, flock.end(), 0.,
-          [&](double sum_partial, flocking::Boid const &current_boid) {
+          [&](double sum_partial, dynamics::Boid const &current_boid) {
               sum_partial += calculate_distance(fixed_boid, current_boid);
               return sum_partial;
           });
@@ -95,7 +95,7 @@ namespace post {
   }
 
   // Calculate standard deviation of distances of a flock of boids; mean distance is passed for efficiency
-  double calculate_standard_deviation_distance(std::vector<flocking::Boid> const &flock, double mean_distance) {
+  double calculate_standard_deviation_distance(std::vector<dynamics::Boid> const &flock, double mean_distance) {
     double const n = flock.size();
     assert(n > 1);
 
@@ -105,12 +105,12 @@ namespace post {
 
     // Iterate through each boid as a potential fixed_boid
     std::for_each(flock.begin(), flock.end(),
-      [&](flocking::Boid const &fixed_boid) {
+      [&](dynamics::Boid const &fixed_boid) {
         auto next = std::next((flock.begin() + i));
 
         // Calculate the sum of squared distances from the fixed_boid to all other boids
         sum_squared_distances = std::accumulate(next, flock.end(), 0.,
-          [&](double squared_distance, flocking::Boid const &current_boid) {
+          [&](double squared_distance, dynamics::Boid const &current_boid) {
             double distance = calculate_distance(fixed_boid, current_boid);
             squared_distance += distance * distance;
             return squared_distance;
@@ -142,13 +142,13 @@ namespace post {
   }
 
     // Calculate mean of magnitudes of velocity vectors of a flock of boids
-  double calculate_mean_velocity(std::vector<flocking::Boid> const &flock) {
+  double calculate_mean_velocity(std::vector<dynamics::Boid> const &flock) {
     double const n = flock.size();
     assert(n > 1);
 
     // Calculate the sum of velocity magnitudes for all boids
     double velocity_sum = std::accumulate(flock.begin(), flock.end(), 0.,
-      [](double velocity_sum, flocking::Boid const &current_boid) {
+      [](double velocity_sum, dynamics::Boid const &current_boid) {
         velocity_sum += Math::calculate_norm(current_boid.v());
         return velocity_sum;
       });
@@ -159,7 +159,7 @@ namespace post {
   }
 
   // Calculate standard deviation of velocities of a flock of boids; mean velocity is passed for efficiency
-  double calculate_standard_deviation_velocity(std::vector<flocking::Boid> const &flock, double mean_velocity) {
+  double calculate_standard_deviation_velocity(std::vector<dynamics::Boid> const &flock, double mean_velocity) {
     double const n = flock.size();
     assert(n > 1);
 
@@ -168,7 +168,7 @@ namespace post {
 
     // Calculate the sum of squared velocity magnitudes for all boids
     sum_squared_velocities = std::accumulate(flock.begin(), flock.end(), 0.,
-      [&](double velocity_sum, flocking::Boid const &current_boid) {
+      [&](double velocity_sum, dynamics::Boid const &current_boid) {
         double vel_magnitude = Math::calculate_norm(current_boid.v());
         velocity_sum += vel_magnitude * vel_magnitude;
         return velocity_sum;
