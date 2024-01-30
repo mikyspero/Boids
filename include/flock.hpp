@@ -6,15 +6,15 @@ namespace dynamics{
   // A struct containing parameters necessary for the dynamics of the simulation
   // It specifies the behavior of the boids in the flock
   struct running_parameters {
-    int boids_number{700};
-    double s{0.4};         // Separation parameter
-    double a{0.9};         // Alignment parameter
-    double c{0.8};         // Cohesion parameter
+    int boids_number{250};
+    double s{0.6};         // Separation parameter
+    double a{0.8};         // Alignment parameter
+    double c{0.7};         // Cohesion parameter
     double d_s{1.75};        // Distance at which separation gets activated
-    double d{4.};         // Distance to define the neighborhood between boids
+    double d{3.};         // Distance to define the neighborhood between boids
     double left_bound{0.};     // Left bound of the simulation space
-    double right_bound{160.};  // Right bound of the simulation space
-    double upper_bound{90.};   // Upper bound of the simulation space
+    double right_bound{144.};  // Right bound of the simulation space
+    double upper_bound{81.};   // Upper bound of the simulation space
     double bottom_bound{0.};   // Bottom bound of the simulation space
     double maximum_velocity{100.};   // Maximum velocity of the boids
     double minimum_velocity{20.};   // Minimum velocity of the boids

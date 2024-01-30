@@ -147,7 +147,7 @@ data build_data(std::vector<dynamics::Boid> const& flock){
     sf::Clock frame_clock;
     sf::Clock data_clock;
     sf::Font font;
-    if (!font.loadFromFile("arial.ttf")){
+    if (!font.loadFromFile("utils/arial.ttf")){
       throw std::runtime_error("ERROR: Failed to load  files");
     }
     // Game loop, while the loopp runs (or when the simulation_window is not closed) each operation is going to bbe done
@@ -175,7 +175,7 @@ data build_data(std::vector<dynamics::Boid> const& flock){
       sf::Time data_time = data_clock.getElapsedTime();
       int integer_data_time = static_cast<int>(data_time.asSeconds());
       if (integer_data_time % 2 == 0) {
-      render_data(flock,data_window,font,parameters);
+        render_data(flock,data_window,font,parameters);
       }
     }
   }
