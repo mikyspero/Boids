@@ -12,11 +12,11 @@ $ make -C build
 
 to create the two executables boids and boids.test executables which are going to be activated with the following commands
 
-$ executables/./boids
+$ ./boids
 
 and
 
-$ executables/./boids.test
+$ ./boids.test
 
 the program has been tested in Ubuntu 22.04 using the following compilers:
 gcc 11.3.0, gcc 11.4.0 and g++11.4.0
